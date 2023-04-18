@@ -1,5 +1,15 @@
+﻿import sys
 import os
+libdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'lib')
+if os.path.exists(libdir):
+    sys.path.append(libdir)
+
+import logging
+from waveshare_epd import epd7in3g
+import time
 from PIL import Image,ImageDraw,ImageFont
+
+logging.basicConfig(level=logging.DEBUG)
 
 EPD_WIDTH       = 800
 EPD_HEIGHT      = 480
@@ -14,8 +24,20 @@ YELLOW_RGBA = 0xff00ffff   #   10
 RED_RGBA    = 0xff0000ff   #   11
 
 def main():
+    logging.info("epd7in3g Demo")
+
+    epd = epd7in3g.EPD()   
+    logging.info("init and Clear")
+    epd.init()
+    epd.Clear()
+
     picdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'calendar')
     fontdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'font')
+
+    logging.info("read calendar bmp file")
+    Himage = Image.open(os.path.join(picdir, 'Calendar.bmp'))
+    epd.display(epd.getbuffer(Himage))
+    time.sleep(10)
 
     dinFont = ImageFont.truetype(os.path.join(fontdir, 'DIN Bold.ttf'), 40)
     avantFont = ImageFont.truetype(os.path.join(fontdir, 'Avgardm.ttf'), 50)
@@ -37,7 +59,15 @@ def main():
 
     out = Image.alpha_composite(Himage, TextImage)
     out.convert('RGB')
-    out.show()
+    #out.show()
+    epd.display(epd.getbuffer(out))
+    time.sleep(10)
+
+    logging.info("Clear...")
+    epd.Clear()
+    
+    logging.info("Goto Sleep...")
+    epd.sleep()
 
 if __name__=='__main__':
     main()
