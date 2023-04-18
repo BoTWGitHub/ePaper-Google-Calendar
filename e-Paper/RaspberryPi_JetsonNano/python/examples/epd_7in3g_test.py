@@ -32,9 +32,9 @@ try:
     draw = ImageDraw.Draw(Himage)
     draw.text((5, 0), 'hello world', font = font18, fill = epd.RED)
     draw.text((5, 20), '7.3inch e-Paper', font = font24, fill = epd.YELLOW)
-    draw.text((5, 45), u'å¾®é›ªç”µå­', font = font40, fill = epd.BLACK)
-    draw.text((5, 85), u'å¾®é›ªç”µå­', font = font40, fill = epd.YELLOW)
-    draw.text((5, 125), u'å¾®é›ªç”µå­', font = font40, fill = epd.RED)
+    draw.text((5, 45), u'å¾®é?ªç?µå??', font = font40, fill = epd.BLACK)
+    draw.text((5, 85), u'å¾®é?ªç?µå??', font = font40, fill = epd.YELLOW)
+    draw.text((5, 125), u'å¾®é?ªç?µå??', font = font40, fill = epd.RED)
 
     draw.line((5, 170, 80, 245), fill = epd.RED)
     draw.line((80, 170, 5, 245), fill = epd.YELLOW)
