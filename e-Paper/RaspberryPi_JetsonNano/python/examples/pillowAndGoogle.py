@@ -20,7 +20,7 @@ RED_RGBA    = 0xff0000ff   #   11
 MAX_LINE     = 5
 MAX_LINE_LEN = 684
 LINE_START_X = 55
-FIRST_LINE_Y = 162
+FIRST_LINE_Y = 165
 LINE_DIFF_Y  = 48
 
 SCOPES = ['https://www.googleapis.com/auth/calendar.readonly']
@@ -51,12 +51,12 @@ def main():
     dinFont = ImageFont.truetype(os.path.join(fontdir, 'DIN Bold.ttf'), 40)
     avantFont = ImageFont.truetype(os.path.join(fontdir, 'Avgardm.ttf'), 50)
     msjhFont = ImageFont.truetype(os.path.join(fontdir, 'msjhbd.ttc'), 40)
-    msjhFont36 = ImageFont.truetype(os.path.join(fontdir, 'msjhbd.ttc'), 36)
+    msjhFont36 = ImageFont.truetype(os.path.join(fontdir, 'msjhbd.ttc'), 30)
     helvaticaFont100 = ImageFont.truetype(os.path.join(fontdir, 'helvetica-compressed.ttf'), 100)
     helvaticaFont34 = ImageFont.truetype(os.path.join(fontdir, 'Helvetica-Bold.ttf'), 34)
 
     #set base image and text image
-    Himage = Image.open(os.path.join(picdir, 'Calendar_Cloud.bmp')).convert('RGBA')
+    Himage = Image.open(os.path.join(picdir, 'Calendar_Sun.bmp')).convert('RGBA')
     TextImage = Image.new('RGBA', (EPD_WIDTH, EPD_HEIGHT), (255, 255, 255, 0))
     draw = ImageDraw.Draw(TextImage)
 
@@ -64,9 +64,9 @@ def main():
     date = datetime.datetime.now().date()
     deg = '22'
     draw.text((50, 20), str(date.year), font = dinFont, fill = WHITE_RGBA)
-    draw.text((355-avantFont.getlength(MONTHS[date.month-1]), 75), MONTHS[date.month-1], font = avantFont, fill = WHITE_RGBA)
+    draw.text((350-avantFont.getlength(MONTHS[date.month-1]), 75), MONTHS[date.month-1], font = avantFont, fill = WHITE_RGBA)
     draw.text((425-helvaticaFont100.getlength(str(date.day))/2, 50), str(date.day), font = helvaticaFont100, fill = YELLOW_RGBA)
-    draw.text((510, 80), WEEKDAYS[date.weekday()], font = msjhFont, fill = WHITE_RGBA)
+    draw.text((500, 80), WEEKDAYS[date.weekday()], font = msjhFont, fill = WHITE_RGBA)
     draw.text((665-helvaticaFont34.getlength(deg), 30), deg, font = helvaticaFont34, fill = WHITE_RGBA)
     draw.text((670, 30), '°', font = helvaticaFont34, fill = RED_RGBA)
 
