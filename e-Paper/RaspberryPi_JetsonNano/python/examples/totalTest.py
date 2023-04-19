@@ -1,4 +1,4 @@
-import sys
+ï»¿import sys
 import os
 libdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'lib')
 if os.path.exists(libdir):
@@ -14,7 +14,7 @@ from waveshare_epd import epd7in3g
 import time
 
 MONTHS   = ['Jan.','Feb.','Mar.','Apr.','May.','Jun.','Jul.','Aug.','Sep.','Oct.','Nov.','Dec.']
-WEEKDAYS = ['¤@','¤G','¤T','¥|','¤­','¤»','¤é']
+WEEKDAYS = ['ä¸€','äºŒ','ä¸‰','å››','äº”','å…­','æ—¥']
 
 EPD_WIDTH       = 800
 EPD_HEIGHT      = 480
@@ -78,7 +78,7 @@ def main():
     draw.text((425-helvaticaFont100.getlength(str(date.day))/2, 50), str(date.day), font = helvaticaFont100, fill = YELLOW_RGBA)
     draw.text((500, 80), WEEKDAYS[date.weekday()], font = msjhFont, fill = WHITE_RGBA)
     draw.text((665-helvaticaFont34.getlength(deg), 30), deg, font = helvaticaFont34, fill = WHITE_RGBA)
-    draw.text((670, 30), '¢X', font = helvaticaFont34, fill = RED_RGBA)
+    draw.text((670, 30), 'Â°', font = helvaticaFont34, fill = RED_RGBA)
 
     creds = None
     # The file token.json stores the user's access and refresh tokens, and is
