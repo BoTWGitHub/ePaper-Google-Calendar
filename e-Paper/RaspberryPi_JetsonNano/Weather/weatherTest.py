@@ -8,8 +8,9 @@ def get_data():
     authorization = ""
     location = ""
 
-    if os.path.exists('weatherConfig.json'):
-        with open('weatherConfig.json', 'r') as configData:
+    cfgdir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'weatherConfig.json')
+    if os.path.exists(cfgdir):
+        with open(cfgdir, 'r') as configData:
             data = json.loads(configData.read())
             authorization = data["Authorization"]
             location = data["Location"]
