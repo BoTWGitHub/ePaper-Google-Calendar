@@ -59,6 +59,8 @@ class Weather:
             self.minTemp = weather_elements[2]["time"][0]["parameter"]["parameterName"]
             self.maxTemp = weather_elements[4]["time"][0]["parameter"]["parameterName"]
             logging.info("weather : " + self.weathState)
+            logging.info("minTemp : " + self.minTemp)
+            logging.info("maxTemp : " + self.maxTemp)
 
         else:
             logging.error(response.status_code, " : Can't get data!")
