@@ -142,7 +142,6 @@ def drawWeather(image, font):
         data = json.loads(response.text)
 
         weather_elements = data["records"]["location"][0]["weatherElement"]
-        weather_state = weather_elements[0]["time"][0]["parameter"]["parameterName"]
         rain_prob = weather_elements[1]["time"][0]["parameter"]["parameterName"]
         min_tem = weather_elements[2]["time"][0]["parameter"]["parameterName"]
         max_tem = weather_elements[4]["time"][0]["parameter"]["parameterName"]
