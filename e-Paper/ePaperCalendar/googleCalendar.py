@@ -1,6 +1,7 @@
 import os
 import logging
 import datetime
+import platform
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
@@ -13,7 +14,10 @@ def getGoogleCalendarEvents(eventsList: list):
     # The file token.json stores the user's access and refresh tokens, and is
     # created automatically when the authorization flow completes for the first
     # time.
-    tokenFilePath = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'config\\token.json')
+    if platform.system() == "Windows":
+        tokenFilePath = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'config\\token.json')
+    else:
+        tokenFilePath = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'config/token.json')
     
     if os.path.exists(tokenFilePath):
         creds = Credentials.from_authorized_user_file(tokenFilePath, SCOPES)

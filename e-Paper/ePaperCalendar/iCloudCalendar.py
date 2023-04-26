@@ -2,13 +2,18 @@ import os
 import time
 import json
 import logging
+import platform
 import datetime
 from pyicloud import PyiCloudService
 
 def getiCloudCalendarEvents(eventsList: list):
     account = ""
     password = ""
-    accountFile = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'config\\icloud.json')
+    if platform.system() == "Windows":
+        accountFile = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'config\\icloud.json')
+    else:
+        accountFile = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'config/icloud.json')
+        
     if os.path.exists(accountFile):
         with open(accountFile, 'r') as configData:
             try:

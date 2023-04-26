@@ -1,8 +1,9 @@
 ﻿import os
 import json
 import enum
-import requests
 import logging
+import platform
+import requests
 
 WEATHER_URL = "https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001"
 
@@ -25,7 +26,11 @@ class Weather:
         authorization = ""
         location = ""
 
-        configFile = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'config\\weatherConfig.json')
+        if platform.system() == "Windows":
+            configFile = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'config\\weatherConfig.json')
+        else:
+            configFile = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'config/weatherConfig.json')
+
         if os.path.exists(configFile):
             with open(configFile, 'r') as configData:
                 try:
