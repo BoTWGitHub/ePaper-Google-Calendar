@@ -36,7 +36,7 @@ class Weather:
                     logging.error('weather config file error...')
                     return
         else:
-            logging.error('weatherConfig.json doesn\'t exist')
+            logging.error(configFile + ' doesn\'t exist')
             return
         
         params = {

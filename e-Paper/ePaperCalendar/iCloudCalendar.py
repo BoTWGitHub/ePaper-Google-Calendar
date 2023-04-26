@@ -19,7 +19,7 @@ def getiCloudCalendarEvents(eventsList: list):
                 logging.error('icloud.json content error...')
                 return
     else:
-        logging.error('icloud.json doesn\'t exist')
+        logging.error(accountFile + ' doesn\'t exist')
         return
 
     time.strftime("%X %x %Z")

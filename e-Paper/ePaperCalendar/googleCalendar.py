@@ -18,7 +18,7 @@ def getGoogleCalendarEvents(eventsList: list):
     if os.path.exists(tokenFilePath):
         creds = Credentials.from_authorized_user_file(tokenFilePath, SCOPES)
     else:
-        logging.error('token.json doesn\'t exist...')
+        logging.error(tokenFilePath + ' doesn\'t exist...')
         return
 
     try:
