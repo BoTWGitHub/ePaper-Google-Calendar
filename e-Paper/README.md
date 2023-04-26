@@ -7,7 +7,7 @@ https://www.waveshare.com
 
 ## 2. Google Calendar API Demo
 Use Google API to fetch the Google Calendar data.  
-You can follow the description here.
+You can follow the description here.  
 https://developers.google.com/calendar/api/quickstart/python  
 You will need your own **token.json** file which can reach from the Google API tutorial to run this demo.
 
