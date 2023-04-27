@@ -29,9 +29,6 @@ def main():
             epd.init()
 
             for _ in range(48):
-                logging.info("clear...")
-                epd.Clear()
-
                 logging.info('get calendar data')
                 eventsList = icsCollect.collectEvents()
 
@@ -41,6 +38,7 @@ def main():
 
                 logging.info("showing image...")
                 epd.display(epd.getbuffer(outpurImage))
+                logging.info("sleep for 1 hour...")
                 time.sleep(3600)
 
             logging.info("Clear...")
