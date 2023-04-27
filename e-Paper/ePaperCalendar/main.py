@@ -2,8 +2,7 @@ import time
 import drawing
 import logging
 import platform
-import googleCalendar
-import iCloudCalendar
+import icsCollect
 
 EPD_WIDTH       = 800
 EPD_HEIGHT      = 480
@@ -15,10 +14,7 @@ def main():
     logging.basicConfig(level=logging.INFO)
     logging.info('Running on ' + platform.system())
 
-    eventsList = []
-    googleCalendar.getGoogleCalendarEvents(eventsList)
-    iCloudCalendar.getiCloudCalendarEvents(eventsList)
-    eventsList.sort()
+    eventsList = icsCollect.collectEvents()
     
     if platform.system() == "Windows":
         image = drawing.Drawing(EPD_WIDTH, EPD_HEIGHT)

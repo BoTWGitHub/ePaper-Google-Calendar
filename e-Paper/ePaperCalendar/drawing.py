@@ -77,7 +77,7 @@ class Drawing:
         draw = ImageDraw.Draw(image)
         lineY = FIRST_LINE_Y
         for i in range(5):
-            date = str(events[i][0].month) + "/" + str(events[i][0].day) + " : "
+            date = str(events[i][0].datetime.month) + "/" + str(events[i][0].datetime.day) + " : "
             eventStr = date + events[i][1]
             limitLineLength(eventStr)
             draw.text((LINE_START_X, lineY), eventStr, font = eventFont, fill = WHITE_RGBA)
