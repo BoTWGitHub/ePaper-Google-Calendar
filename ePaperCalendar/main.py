@@ -13,11 +13,11 @@ if platform.system() == "Linux":
 def main():
     logging.basicConfig(level=logging.INFO)
     logging.info('Running on ' + platform.system())
-
-    logging.info('get calendar data')
-    eventsList = icsCollect.collectEvents()
     
     if platform.system() == "Windows":
+        logging.info('get calendar data')
+        eventsList = icsCollect.collectEvents()
+        
         image = drawing.Drawing(EPD_WIDTH, EPD_HEIGHT)
         outpurImage = image.getNewImage(eventsList)
         outpurImage.show()
