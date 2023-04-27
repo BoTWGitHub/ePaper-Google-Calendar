@@ -26,6 +26,8 @@ echo '===> install arrow'
 pip install arrow
 echo '===> install requests'
 pip install requests
+echo '===> install vim'
+pip install vim
 
 #make config file
 echo '===> make config folder and file'

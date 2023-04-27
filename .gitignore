@@ -5,6 +5,7 @@ token.json
 weatherConfig.json
 icloud.json
 calUrls.cfg
+testBed/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
