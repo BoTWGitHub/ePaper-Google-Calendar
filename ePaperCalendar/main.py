@@ -14,6 +14,7 @@ def main():
     logging.basicConfig(level=logging.INFO)
     logging.info('Running on ' + platform.system())
 
+    logging.info('get calendar data')
     eventsList = icsCollect.collectEvents()
     
     if platform.system() == "Windows":
@@ -30,6 +31,9 @@ def main():
             for _ in range(48):
                 logging.info("clear...")
                 epd.Clear()
+
+                logging.info('get calendar data')
+                eventsList = icsCollect.collectEvents()
 
                 logging.info("get new image...")
                 image = drawing.Drawing(epd.width, epd.height)
