@@ -25,21 +25,14 @@ try:
     
     # read bmp file 
     logging.info("1.read bmp file")
-    logging.info(os.path.join(picdir, '7.3inch-1.bmp'))
     Himage = Image.open(os.path.join(picdir, '7.3inch-1.bmp'))
     epd.display(epd.getbuffer(Himage))
     time.sleep(3)
-
-    logging.info("Goto Sleep...")
-    epd.sleep()
 
     logging.info("2.read bmp file")
     Himage = Image.open(os.path.join(picdir, '7.3inch-2.bmp'))
     epd.display(epd.getbuffer(Himage))
     time.sleep(3)
-
-    logging.info("Goto Sleep...")
-    epd.sleep()
 
     logging.info("3.read bmp file")
     Himage = Image.open(os.path.join(picdir, '7.3inch-3.bmp'))
