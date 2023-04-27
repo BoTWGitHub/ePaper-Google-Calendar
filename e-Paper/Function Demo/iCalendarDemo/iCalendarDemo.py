@@ -13,7 +13,7 @@ def main():
     if os.path.exists(urlsFile):
         with open(urlsFile, 'r') as urlsData:
             iCals = urlsData.read().splitlines()
-    print(iCals)
+
     for url in iCals:
         icsData = requests.get(url).text
         if icsData.find('PRODID')==-1:
@@ -23,7 +23,7 @@ def main():
         events = sorted(events)
         for event in events:
             if event.begin>=arrow.now():
-                print(event.begin, event.name)
+                print(event.begin.to('Asia/Taipei'), event.name)
         print('-----')
 
 if __name__=='__main__':
