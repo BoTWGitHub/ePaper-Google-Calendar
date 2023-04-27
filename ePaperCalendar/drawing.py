@@ -2,7 +2,7 @@
 import logging
 import weather
 import datetime
-from PIL import Image,ImageDraw,ImageFont
+from PIL import Image,ImageDraw,ImageFont,ImageOps
 
 MONTHS   = ['Jan.','Feb.','Mar.','Apr.','May.','Jun.','Jul.','Aug.','Sep.','Oct.','Nov.','Dec.']
 WEEKDAYS = ['一','二','三','四','五','六','日']
@@ -50,7 +50,7 @@ class Drawing:
         self.height = height
         self.weatherData = weather.Weather()
 
-    def getNewImage(self, events: list) -> Image:
+    def getNewImage(self, events: list, rotate: bool = False) -> Image:
         textImage = Image.new('RGBA', (self.width, self.height), (255, 255, 255, 0))
 
         self.drawCalendarEvents(textImage, events)
@@ -60,6 +60,10 @@ class Drawing:
         base = Image.open(self.getWeatherBasePic()).convert('RGBA')
         res = Image.alpha_composite(base, textImage)
         res.convert('RGB')
+
+        if rotate:
+            logging.info('rotating image...')
+            res = res.rotate(180)
 
         return res
 

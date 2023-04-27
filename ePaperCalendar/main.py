@@ -4,8 +4,8 @@ import logging
 import platform
 import icsCollect
 
-EPD_WIDTH       = 800
-EPD_HEIGHT      = 480
+EPD_WIDTH  = 800
+EPD_HEIGHT = 480
 
 if platform.system() == "Linux":
     from lib.waveshare_epd import epd7in3g
@@ -26,15 +26,18 @@ def main():
             epd = epd7in3g.EPD()   
             logging.info("init and Clear")
             epd.init()
-            epd.Clear()
 
-            logging.info("get new image...")
-            image = drawing.Drawing(epd.width, epd.height)
-            outpurImage = image.getNewImage(eventsList)
+            for _ in range(48):
+                logging.info("clear...")
+                epd.Clear()
 
-            logging.info("showing image...")
-            epd.display(epd.getbuffer(outpurImage))
-            time.sleep(10)
+                logging.info("get new image...")
+                image = drawing.Drawing(epd.width, epd.height)
+                outpurImage = image.getNewImage(eventsList, rotate=True)
+
+                logging.info("showing image...")
+                epd.display(epd.getbuffer(outpurImage))
+                time.sleep(3600)
 
             logging.info("Clear...")
             epd.Clear()
