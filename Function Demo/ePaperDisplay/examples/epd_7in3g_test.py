@@ -25,6 +25,7 @@ try:
     
     # read bmp file 
     logging.info("1.read bmp file")
+    logging.info(os.path.join(picdir, '7.3inch-1.bmp'))
     Himage = Image.open(os.path.join(picdir, '7.3inch-1.bmp'))
     epd.display(epd.getbuffer(Himage))
     time.sleep(3)
