@@ -25,7 +25,7 @@ def main():
         try:
             logging.info("ePaperDisplay: epd7in3g")
             epd = epd7in3g.EPD()   
-            logging.info("init and Clear")
+            logging.info("init display")
             epd.init()
 
             for _ in range(48):
