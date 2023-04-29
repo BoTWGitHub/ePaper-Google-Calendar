@@ -27,10 +27,13 @@ pip install arrow
 echo '===> install requests'
 pip install requests
 echo '===> install vim'
-pip install vim
+sudo apt-get install vim
 
 #make config file
 echo '===> make config folder and file'
 mkdir config
 echo > config/calUrls.cfg
 echo > config/weatherConfig.json
+
+echo '===> remember to enable SPI'
+sudo raspi-config
