@@ -10,11 +10,17 @@ def main():
     
     oldWakeTime = parser.parse(data['auto_wake_time'])
     now = datetime.now()
-    print(newWakeTime)
-    #if oldWakeTime.hour==11:
-    now = now+timedelta(days=1)
-    newWakeTime = datetime(now.year, now.month, now.day, 0, 0, 0, 0, now.timetz)
-    print(newWakeTime)
+    nextDay = now+timedelta(days=1)
+
+    if oldWakeTime.hour==12:
+        newWakeTime = datetime(nextDay.year, nextDay.month, nextDay.day, 0, 0)
+    else:
+        newWakeTime = datetime(now.year, now.month, now.day, 12, 0)
+
+    data['auto_wake_time'] = newWakeTime.isoformat()
+
+    with open('/etc/pisugar-server/config.json', 'w') as file:
+        file.write(json.dumps(data))
 
 
 if __name__=='__main__':
