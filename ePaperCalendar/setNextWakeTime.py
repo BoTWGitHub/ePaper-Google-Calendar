@@ -10,12 +10,12 @@ def main():
         data = json.loads(content)
     
     oldWakeTime = parser.parse(data['auto_wake_time'])
-    now = datetime.now()
+    now = datetime.now(timezone.utc).astimezone()
     nextDay = now+timedelta(days=1)
     
 
     if oldWakeTime.hour==12:
-        newWakeTime = datetime(nextDay.year, nextDay.month, nextDay.day, 0, 0, 0, 0, nextDay.tzinfo))
+        newWakeTime = datetime(nextDay.year, nextDay.month, nextDay.day, 0, 0, 0, 0, nextDay.tzinfo)
     else:
         newWakeTime = datetime(now.year, now.month, now.day, 12, 0, 0, 0, now.tzinfo)
 
