@@ -6,6 +6,7 @@ done
 
 echo "$(date)" >> /home/k2345777/batteryLog.txt
 echo "get battery" | nc -q 0 127.0.0.1 8423 >> /home/k2345777/batteryLog.txt
+echo "rtc_web" | nc -q 0 127.0.0.1 8423
 
 python /home/k2345777/ePaper-Google-Calendar/ePaperCalendar/setNextWakeTime.py
 systemctl restart pisugar-server
@@ -15,4 +16,4 @@ systemctl restart pisugar-server
 
 python /home/k2345777/ePaper-Google-Calendar/ePaperCalendar/updateCalendar.py
 
-#sudo shutdown -h 5
+sudo shutdown -h 3
