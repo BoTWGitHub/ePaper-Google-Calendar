@@ -1,8 +1,8 @@
 #!/bin/bash
 
-sudo python /home/k2345777/ePaper-Google-Calendar/ePaperCalendar/setNextWakeTime.py
+python /home/k2345777/ePaper-Google-Calendar/ePaperCalendar/setNextWakeTime.py
 
-sudo systemctl restart pisugar-server
+systemctl restart pisugar-server
 
 while ! ping -c 1 -W 1 www.google.com; do
     sleep 1
