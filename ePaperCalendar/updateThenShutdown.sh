@@ -13,7 +13,7 @@ while [ $retry -gt 0 ]; do
     fi
 done
 
-if [ $connect == 1]; then
+if [ $connect == 1 ]; then
     echo "$(date)" >> /home/k2345777/batteryLog.txt
     echo "get battery" | nc -q 0 127.0.0.1 8423 >> /home/k2345777/batteryLog.txt
     echo "rtc_web" | nc -q 0 127.0.0.1 8423
