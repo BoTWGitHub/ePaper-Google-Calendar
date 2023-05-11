@@ -54,4 +54,4 @@ if [ $serverReady == 1 ]; then
     echo "rtc_web" | nc -q 0 127.0.0.1 8423
 fi
 
-sudo shutdown now
+sudo shutdown 1
