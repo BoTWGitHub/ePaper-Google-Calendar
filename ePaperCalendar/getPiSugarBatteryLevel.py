@@ -1,28 +1,26 @@
 from pisugar import *
 from datetime import datetime
 import time
+import os
 
 def main():
-    logFilePath = '/home/k2345777/log.txt'
+    logFilePath = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'BatteryLog.txt')
     conn, event_conn = connect_tcp('127.0.0.1')
     server = PiSugarServer(conn, event_conn)
-    retry = 10
+    retry = 10 #5min
     while retry>0:
         try:
             level = server.get_battery_level()
             print(level)
             break
         except:
-            print('error...')
+            print('not ready...')
             retry-=1
-        print('delay 10s...')
+        print('delay 30s...')
         time.sleep(30)
     
-    with open(logFilePath, 'w') as file:
-        file.write(datetime.now())
-        file.write('\n')
-        file.write(level)
-        file.write('\n')
+    with open(logFilePath, 'a') as file:
+        file.write(str(datetime.now()) + ', Battery Level: ' + str(level) + '\n')
 
 if __name__=='__main__':
     main()
