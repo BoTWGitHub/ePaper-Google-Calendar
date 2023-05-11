@@ -13,8 +13,8 @@ while [ $retry -gt 0 ]; do
     fi
 done
 
-#python -m pip install arrow
-#python -m pip install ics
+python -m pip install arrow
+python -m pip install ics
 echo "update calendar..."
 python /home/k2345777/ePaper-Google-Calendar/ePaperCalendar/updateCalendar.py
 
@@ -22,6 +22,7 @@ echo "update wakeup time"
 python /home/k2345777/ePaper-Google-Calendar/ePaperCalendar/setNextWakeTime.py
 systemctl restart pisugar-server
 
+python -m pip install pisugar
 python /home/k2345777/ePaper-Google-Calendar/ePaperCalendar/getPiSugarBatteryLevel.py
 
 sudo shutdown 1

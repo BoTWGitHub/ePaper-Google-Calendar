@@ -1,5 +1,6 @@
 from pisugar import *
 from datetime import datetime
+import logging
 import time
 import os
 
@@ -11,12 +12,12 @@ def main():
     while retry>0:
         try:
             level = server.get_battery_level()
-            print(level)
+            logging.info('get level: ' + str(level))
             break
         except:
-            print('not ready...')
+            logging.info('not ready...')
             retry-=1
-        print('delay 30s...')
+        logging.info('delay 30s...')
         time.sleep(30)
     
     with open(logFilePath, 'a') as file:

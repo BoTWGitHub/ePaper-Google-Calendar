@@ -2,7 +2,6 @@ import json
 from datetime import timezone
 from datetime import timedelta
 from datetime import datetime
-from dateutil import parser
 
 def main():
     with open('/etc/pisugar-server/config.json', 'r') as file:
