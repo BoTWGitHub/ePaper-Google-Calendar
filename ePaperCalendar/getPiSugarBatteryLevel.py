@@ -5,6 +5,7 @@ import time
 import os
 
 def main():
+    logging.basicConfig(level=logging.INFO)
     logFilePath = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'BatteryLog.txt')
     conn, event_conn = connect_tcp('127.0.0.1')
     server = PiSugarServer(conn, event_conn)
