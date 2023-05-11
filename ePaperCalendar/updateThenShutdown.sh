@@ -22,6 +22,6 @@ echo "update wakeup time"
 python /home/k2345777/ePaper-Google-Calendar/ePaperCalendar/setNextWakeTime.py
 systemctl restart pisugar-server
 
-
+python /home/k2345777/ePaper-Google-Calendar/ePaperCalendar/getPiSugarBatteryLevel.py
 
 sudo shutdown 1
