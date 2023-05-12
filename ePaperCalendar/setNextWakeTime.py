@@ -11,10 +11,13 @@ def main():
     now = datetime.now(timezone.utc).astimezone()
     nextDay = now+timedelta(days=1)
 
-    if now.hour>=12:
-        newWakeTime = datetime(nextDay.year, nextDay.month, nextDay.day, 0, 0, 0, 0, nextDay.tzinfo)
+    if now.hour<18:
+        if(now.hour<6):
+            newWakeTime = datetime(now.year, now.month, now.day, 6, 0, 0, 0, nextDay.tzinfo)
+        else:
+            newWakeTime = datetime(now.year, now.month, now.day, 18, 0, 0, 0, nextDay.tzinfo)
     else:
-        newWakeTime = datetime(now.year, now.month, now.day, 12, 0, 0, 0, now.tzinfo)
+        newWakeTime = datetime(nextDay.year, nextDay.month, nextDay.day, 6, 0, 0, 0, now.tzinfo)
 
     data['auto_wake_time'] = newWakeTime.isoformat()
 
