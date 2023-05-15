@@ -37,6 +37,7 @@ monthFont   = ImageFont.truetype(os.path.join(fontdir, 'Avgardm.ttf'), 50)
 dayFont     = ImageFont.truetype(os.path.join(fontdir, 'helvetica-compressed.ttf'), 100)
 weekdayFont = ImageFont.truetype(os.path.join(fontdir, 'msjhbd.ttc'), 40)
 weatherFont = ImageFont.truetype(os.path.join(fontdir, 'Helvetica-Bold.ttf'), 16)
+lowBatFont   = ImageFont.truetype(os.path.join(fontdir, 'msjhbd.ttc'), 18)
 
 WeatherPicture = {weather.WeatherType.Sun:"Calendar1.bmp"
                 , weather.WeatherType.SunAndCloud:"Calendar2.bmp"
@@ -50,12 +51,14 @@ class Drawing:
         self.height = height
         self.weatherData = weather.Weather()
 
-    def getNewImage(self, events: list, rotate: bool = False) -> Image:
+    def getNewImage(self, events: list, rotate: bool = False, lowBat: bool = False) -> Image:
         textImage = Image.new('RGBA', (self.width, self.height), (255, 255, 255, 0))
 
         self.drawCalendarEvents(textImage, events)
         self.drawDatetime(textImage)
         self.drawWeather(textImage)
+        if lowBat:
+            self.drawLowBattery(textImage)
 
         base = Image.open(self.getWeatherBasePic()).convert('RGBA')
         res = Image.alpha_composite(base, textImage)
@@ -117,3 +120,9 @@ class Drawing:
     def getWeatherBasePic(self) -> str:
         res = os.path.join(picdir, WeatherPicture[self.weatherData.getWeatherType()])
         return res
+    
+    def drawLowBattery(self, image: Image):
+        draw = ImageDraw.Draw(image)
+
+        str = "電量不足"
+        draw.text((795-lowBatFont.getlength(str), 2), str, font = lowBatFont, fill = RED_RGBA)

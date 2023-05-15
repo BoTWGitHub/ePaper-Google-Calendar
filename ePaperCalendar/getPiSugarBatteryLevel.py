@@ -9,7 +9,7 @@ def main():
     logFilePath = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'BatteryLog.txt')
     conn, event_conn = connect_tcp('127.0.0.1')
     server = PiSugarServer(conn, event_conn)
-    retry = 10 #5min
+    retry = 60 #10min
     while retry>0:
         try:
             level = server.get_battery_level()
@@ -18,8 +18,8 @@ def main():
         except:
             logging.info('not ready...')
             retry-=1
-        logging.info('delay 30s...')
-        time.sleep(30)
+        logging.info('delay 10s...')
+        time.sleep(10)
     
     with open(logFilePath, 'a') as file:
         file.write(str(datetime.now()) + ', Battery Level: ' + str(level) + '\n')
