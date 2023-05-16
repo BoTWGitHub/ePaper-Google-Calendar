@@ -28,6 +28,8 @@ TEMP_CENTER = 668
 TEMP_TOP    = 114
 RAIN_POS    = (735, 114)
 
+NUM_OF_ITEMS = 5
+
 picdir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'pic')
 fontdir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'font')
 
@@ -83,12 +85,16 @@ class Drawing:
                 break
         draw = ImageDraw.Draw(image)
         lineY = FIRST_LINE_Y
-        for i in range(5):
-            date = str(events[i][0].datetime.month) + "/" + str(events[i][0].datetime.day) + " : "
-            eventStr = date + events[i][1]
+        items = 0
+        for event in events:
+            if items==NUM_OF_ITEMS:
+                break
+            date = str(event[0].datetime.month) + "/" + str(event[0].datetime.day) + " : "
+            eventStr = date + event[1]
             limitLineLength(eventStr)
             draw.text((LINE_START_X, lineY), eventStr, font = eventFont, fill = WHITE_RGBA)
             lineY+=LINE_DIFF_Y
+            items+=1
 
     def drawDatetime(self, image: Image):
         draw = ImageDraw.Draw(image)

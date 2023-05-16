@@ -38,8 +38,20 @@ mkdir config
 echo > config/calUrls.cfg
 echo > config/weatherConfig.json
 
+echo '===> adjust script mod'
+sudo chmod +x /ePaper-Google-Calnedar/ePaperCalendar/updateThenShutdown.sh
+
+echo '===> copy service script to system'
+sudo cp /ePaper-Google-Calnedar/ePaperCalendar/Calendar.service /etc/systemd/system/Calendar.service
+
 echo '===> install pisugar server'
 curl http://cdn.pisugar.com/release/pisugar-power-manager.sh | sudo bash
 
 echo '===> remember to enable SPI and I2C'
 sudo raspi-config
+
+echo '===> start Calendar service'
+sudo systemctl daemon-reload
+sudo systemctl enable Calendar.service
+
+sudo reboot
