@@ -3,7 +3,7 @@ Description=ePaperCalendar
 After=network.target
 
 [Service]
-ExecStart=/ePaper-Google-Calendar/ePaperCalendar/updateThenShutdown.sh
+ExecStart=/home/k2345777/ePaper-Google-Calendar/ePaperCalendar/updateThenShutdown.sh
 User=root
 
 [Install]
