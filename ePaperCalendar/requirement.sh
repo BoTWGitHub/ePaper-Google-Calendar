@@ -42,7 +42,7 @@ echo '===> adjust script mod'
 sudo chmod +x /ePaper-Google-Calnedar/ePaperCalendar/updateThenShutdown.sh
 
 echo '===> copy service script to system'
-sudo cp /ePaper-Google-Calnedar/ePaperCalendar/Calendar.service /etc/systemd/system/Calendar.service
+sudo cp /ePaper-Google-Calendar/ePaperCalendar/Calendar.service /etc/systemd/system/Calendar.service
 
 echo '===> install pisugar server'
 curl http://cdn.pisugar.com/release/pisugar-power-manager.sh | sudo bash
