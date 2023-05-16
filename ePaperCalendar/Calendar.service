@@ -1,0 +1,10 @@
+[Unit]
+Description=ePaperCalendar
+After=network.target
+
+[Service]
+ExecStart=/path/to/your/script.sh
+User=root
+
+[Install]
+WantedBy=multi-user.target

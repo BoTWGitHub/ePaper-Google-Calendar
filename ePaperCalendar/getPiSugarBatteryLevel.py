@@ -7,6 +7,13 @@ import os
 def main():
     logging.basicConfig(level=logging.INFO)
     logFilePath = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'BatteryLog.txt')
+    
+    level = waitBatteryData()
+    
+    with open(logFilePath, 'a') as file:
+        file.write(str(datetime.now()) + ', Battery Level: ' + str(level) + '\n')
+
+def waitBatteryData():
     conn, event_conn = connect_tcp('127.0.0.1')
     server = PiSugarServer(conn, event_conn)
     retry = 60 #10min
@@ -21,8 +28,7 @@ def main():
         logging.info('delay 10s...')
         time.sleep(10)
     
-    with open(logFilePath, 'a') as file:
-        file.write(str(datetime.now()) + ', Battery Level: ' + str(level) + '\n')
+    return level
 
 if __name__=='__main__':
     main()

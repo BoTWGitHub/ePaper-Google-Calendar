@@ -13,6 +13,9 @@ sudo apt-get install python3-pil
 echo '===> install python3-numpy'
 sudo apt-get install python3-numpy
 
+echo '===> install i2c-tools'
+sudo apt-get install i2c-tools
+
 echo '===> install RPi.GPIO'
 sudo pip3 install RPi.GPIO
 
@@ -35,5 +38,8 @@ mkdir config
 echo > config/calUrls.cfg
 echo > config/weatherConfig.json
 
-echo '===> remember to enable SPI'
+echo '===> install pisugar server'
+curl http://cdn.pisugar.com/release/pisugar-power-manager.sh | sudo bash
+
+echo '===> remember to enable SPI and I2C'
 sudo raspi-config

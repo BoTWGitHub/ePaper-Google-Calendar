@@ -1,6 +1,7 @@
 import drawing
 import logging
 import icsCollect
+import getPiSugarBatteryLevel
 from lib.waveshare_epd import epd7in3g
 
 def main():
@@ -13,7 +14,12 @@ def main():
 
         logging.info("get new image...")
         image = drawing.Drawing(epd.width, epd.height)
-        outpurImage = image.getNewImage(icsCollect.collectEvents(), rotate=True)
+
+        lowBattery = False
+        if getPiSugarBatteryLevel.waitBatteryData() < 20:
+            lowBattery = True
+
+        outpurImage = image.getNewImage(icsCollect.collectEvents(), rotate=True, lowBat=lowBattery)
 
         logging.info("showing image...")
         epd.display(epd.getbuffer(outpurImage))
