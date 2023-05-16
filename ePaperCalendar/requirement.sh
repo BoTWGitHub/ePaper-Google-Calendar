@@ -39,7 +39,7 @@ echo > config/calUrls.cfg
 echo > config/weatherConfig.json
 
 echo '===> adjust script mod'
-sudo chmod +x /ePaper-Google-Calnedar/ePaperCalendar/updateThenShutdown.sh
+sudo chmod +x ~/ePaper-Google-Calendar/ePaperCalendar/updateThenShutdown.sh
 
 echo '===> copy service script to system'
 sudo cp ~/ePaper-Google-Calendar/ePaperCalendar/Calendar.service /etc/systemd/system/Calendar.service
