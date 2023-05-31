@@ -12,11 +12,11 @@ WHITE_RGBA  = 0xffffffff   #   01
 YELLOW_RGBA = 0xff00ffff   #   10
 RED_RGBA    = 0xff0000ff   #   11
 
-MAX_LINE     = 5
-MAX_LINE_LEN = 684
-LINE_START_X = 55
-FIRST_LINE_Y = 165
-LINE_DIFF_Y  = 48
+MAX_LINE_LEN  = 331
+LINE_START_X1 = 55
+LINE_START_X2 = 420
+FIRST_LINE_Y  = 165
+LINE_DIFF_Y   = 48
 
 YEAR_POS    = (50, 20)
 MONTH_RIGHT = 350
@@ -28,7 +28,7 @@ TEMP_CENTER = 668
 TEMP_TOP    = 114
 RAIN_POS    = (735, 114)
 
-NUM_OF_ITEMS = 5
+NUM_OF_ITEMS = 10
 
 picdir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'pic')
 fontdir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'font')
@@ -83,18 +83,22 @@ class Drawing:
                     line = line[:-1]
                 line+='...'
                 break
+            return line
         draw = ImageDraw.Draw(image)
         lineY = FIRST_LINE_Y
         items = 0
+        lineX = LINE_START_X1
         for event in events:
             if items==NUM_OF_ITEMS:
                 break
             date = str(event[0].datetime.month) + "/" + str(event[0].datetime.day) + " : "
             eventStr = date + event[1]
-            limitLineLength(eventStr)
-            draw.text((LINE_START_X, lineY), eventStr, font = eventFont, fill = WHITE_RGBA)
+            draw.text((lineX, lineY), limitLineLength(eventStr), font = eventFont, fill = WHITE_RGBA)
             lineY+=LINE_DIFF_Y
             items+=1
+            if items==5:
+                lineX = LINE_START_X2
+                lineY = FIRST_LINE_Y
 
     def drawDatetime(self, image: Image):
         draw = ImageDraw.Draw(image)
