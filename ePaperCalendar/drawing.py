@@ -125,7 +125,7 @@ class Drawing:
         temp = min_tem + "° - " + max_tem  + "°"
         rain_prob += "%"
         draw.text((TEMP_CENTER-weatherFont.getlength(temp)/2, TEMP_TOP), temp, font = weatherFont, fill = WHITE_RGBA)
-        draw.text(RAIN_POS, rain_prob, font = weatherFont, fill = RED_RGBA)
+        draw.text(RAIN_POS, rain_prob, font = weatherFont, fill = YELLOW_RGBA)
 
     def getWeatherBasePic(self) -> str:
         res = os.path.join(picdir, WeatherPicture[self.weatherData.getWeatherType()])
