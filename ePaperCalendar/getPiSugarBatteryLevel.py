@@ -18,7 +18,6 @@ def waitBatteryData():
     conn, event_conn = connect_tcp('127.0.0.1')
     server = PiSugarServer(conn, event_conn)
     retry = 60 #10min
-    server.rtc_web()
     while retry>0:
         try:
             level = server.get_battery_level()
@@ -30,6 +29,8 @@ def waitBatteryData():
         logging.info('delay 10s...')
         time.sleep(10)
 
+    logging.info("sync RTC...")
+    server.rtc_web()
     return level
 
 if __name__=='__main__':
