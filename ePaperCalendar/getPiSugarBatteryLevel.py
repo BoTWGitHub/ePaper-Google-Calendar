@@ -14,6 +14,7 @@ def main():
         file.write(str(datetime.now()) + ', Battery Level: ' + str(level) + '\n')
 
 def waitBatteryData():
+    logging.info("get battery level...")
     conn, event_conn = connect_tcp('127.0.0.1')
     server = PiSugarServer(conn, event_conn)
     retry = 60 #10min

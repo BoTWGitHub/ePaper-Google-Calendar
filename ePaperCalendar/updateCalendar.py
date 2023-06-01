@@ -12,13 +12,12 @@ def main():
         logging.info("init and Clear")
         epd.init()
 
-        logging.info("get new image...")
-        image = drawing.Drawing(epd.width, epd.height)
-
         lowBattery = False
         if getPiSugarBatteryLevel.waitBatteryData() < 20:
             lowBattery = True
 
+        logging.info("get new image...")
+        image = drawing.Drawing(epd.width, epd.height)
         outpurImage = image.getNewImage(icsCollect.collectEvents(), rotate=True, lowBat=lowBattery)
 
         logging.info("showing image...")

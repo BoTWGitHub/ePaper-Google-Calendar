@@ -6,6 +6,7 @@ import requests
 from ics import Calendar
 
 def collectEvents() -> list:
+    logging.info("collecting events...")
     if platform.system() == "Windows":
         urlsFile = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'config\\calUrls.cfg')
     else:

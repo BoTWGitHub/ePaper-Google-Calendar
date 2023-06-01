@@ -73,6 +73,7 @@ class Drawing:
         return res
 
     def drawCalendarEvents(self, image: Image, events: list):
+        logging.info("draw list...")
         if not events:
                 logging.error('No upcoming events found.')
                 return
@@ -101,6 +102,7 @@ class Drawing:
                 lineY = FIRST_LINE_Y
 
     def drawDatetime(self, image: Image):
+        logging.info("draw date time...")
         draw = ImageDraw.Draw(image)
 
         date = datetime.datetime.now().date()
@@ -110,6 +112,7 @@ class Drawing:
         draw.text(WEEKDAY_POS, WEEKDAYS[date.weekday()], font = weekdayFont, fill = WHITE_RGBA)
 
     def drawWeather(self, image: Image):
+        logging.info("draw weather...")
         draw = ImageDraw.Draw(image)
         
         self.weatherData.fetchWeather()
@@ -132,6 +135,7 @@ class Drawing:
         return res
     
     def drawLowBattery(self, image: Image):
+        logging.info("draw low battery...")
         draw = ImageDraw.Draw(image)
 
         str = "電量不足"
