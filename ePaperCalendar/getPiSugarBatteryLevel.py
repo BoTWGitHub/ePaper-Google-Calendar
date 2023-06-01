@@ -22,7 +22,7 @@ def waitBatteryData():
         try:
             level = server.get_battery_level()
             logging.info('get level: ' + str(level))
-            break
+            return level
         except:
             logging.info('not ready...')
             retry-=1
