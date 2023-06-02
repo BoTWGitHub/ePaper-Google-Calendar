@@ -28,9 +28,6 @@ def waitBatteryData():
             retry-=1
         logging.info('delay 10s...')
         time.sleep(10)
-
-    logging.info("sync RTC...")
-    server.rtc_web()
     return level
 
 if __name__=='__main__':
