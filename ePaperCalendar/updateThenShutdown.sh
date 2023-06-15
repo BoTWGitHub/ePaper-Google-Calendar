@@ -4,6 +4,14 @@ python -m pip install arrow
 python -m pip install ics
 python -m pip install pisugar
 
+echo "Check network..."
+while ! ping -c 1 -W 1 www.google.com; do
+    sleep 1
+done
+echo "Network OK!"
+
+sleep 1
+
 echo "sync the time..."
 echo "rtc_web" | nc -q 0 127.0.0.1 8423
 

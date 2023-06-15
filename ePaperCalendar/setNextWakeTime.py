@@ -22,7 +22,7 @@ def main():
         newWakeTime = datetime(nextDay.year, nextDay.month, nextDay.day, 6, 0, 0, 0, now.tzinfo)
 
     data['auto_wake_time'] = newWakeTime.isoformat()
-    logging.info("setting next wake up time ", data['auto_wake_time'])
+    logging.info("setting next wake up time " + data['auto_wake_time'])
     data['auto_wake_repeat'] = 127
 
     with open('/etc/pisugar-server/config.json', 'w') as file:
