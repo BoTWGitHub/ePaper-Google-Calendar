@@ -50,8 +50,8 @@ curl http://cdn.pisugar.com/release/pisugar-power-manager.sh | sudo bash
 echo '===> remember to enable SPI and I2C'
 sudo raspi-config
 
-echo '===> start Calendar service'
-sudo systemctl daemon-reload
-sudo systemctl enable Calendar.service
+#echo '===> start Calendar service'
+#sudo systemctl daemon-reload
+#sudo systemctl enable Calendar.service
 
-sudo reboot
+#sudo reboot

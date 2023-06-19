@@ -1,14 +1,14 @@
 #!/bin/bash
 
-python -m pip install arrow
-python -m pip install ics
-python -m pip install pisugar
+#python -m pip install arrow
+#python -m pip install ics
+#python -m pip install pisugar
 
 echo "Check network..."
 while ! ping -c 1 -W 1 www.google.com; do
     sleep 1
 done
-echo "Network OK!"
+echo "Network ok!"
 
 sleep 1
 
@@ -25,4 +25,6 @@ python /home/k2345777/ePaper-Google-Calendar/ePaperCalendar/updateCalendar.py
 echo "get battery level..."
 python /home/k2345777/ePaper-Google-Calendar/ePaperCalendar/getPiSugarBatteryLevel.py
 
-sudo shutdown 1
+sleep 10
+
+sudo shutdown now
