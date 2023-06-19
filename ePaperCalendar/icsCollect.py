@@ -20,6 +20,7 @@ def collectEvents() -> list:
         return []
     
     res = []
+    currentTime = arrow.now()
     for url in urls:
         try:
             icsData = requests.get(url).text
@@ -29,8 +30,9 @@ def collectEvents() -> list:
             cal = Calendar(icsData)
             events = cal.events
             for event in events:
-                if event.begin>=arrow.now():
-                    res.append([event.begin, event.name])
+                eventTime = arrow.get(event.begin.astimezone(currentTime.tzinfo))
+                if eventTime>=currentTime:
+                    res.append([eventTime, event.name])
         except:
             logging.error('iCal parsing error...')
     
