@@ -11,8 +11,9 @@ if platform.system() == "Linux":
     from lib.waveshare_epd import epd7in3g
 
 def main():
-    logging.basicConfig(level=logging.INFO)
+    logging.basicConfig(filename='error.log', level=logging.INFO, format='%(asctime)s %(levelname)s %(message)s')
     logging.info('Running on ' + platform.system())
+    logging.error('test')
     
     if platform.system() == "Windows":
         logging.info('get calendar data')

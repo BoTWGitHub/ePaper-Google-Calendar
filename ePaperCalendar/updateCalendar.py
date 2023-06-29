@@ -5,7 +5,7 @@ import getPiSugarBatteryLevel
 from lib.waveshare_epd import epd7in3g
 
 def main():
-    logging.basicConfig(level=logging.INFO)
+    logging.basicConfig(filename='logging.log', level=logging.INFO, format='%(asctime)s %(levelname)s %(message)s')
     try:
         logging.info("ePaperDisplay: epd7in3g")
         epd = epd7in3g.EPD()   

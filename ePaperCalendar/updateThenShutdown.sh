@@ -22,9 +22,6 @@ systemctl restart pisugar-server
 echo "update calendar..."
 python /home/k2345777/ePaper-Google-Calendar/ePaperCalendar/updateCalendar.py
 
-echo "get battery level..."
-python /home/k2345777/ePaper-Google-Calendar/ePaperCalendar/getPiSugarBatteryLevel.py
-
 sleep 10
 
 sudo shutdown now

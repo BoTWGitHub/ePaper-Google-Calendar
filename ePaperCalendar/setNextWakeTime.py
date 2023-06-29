@@ -5,7 +5,7 @@ from datetime import datetime
 import logging
 
 def main():
-    logging.basicConfig(level=logging.INFO)
+    logging.basicConfig(filename='logging.log', level=logging.INFO, format='%(asctime)s %(levelname)s %(message)s')
     with open('/etc/pisugar-server/config.json', 'r') as file:
         content = file.read()
         data = json.loads(content)
