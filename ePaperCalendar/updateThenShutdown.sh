@@ -4,6 +4,8 @@
 #python -m pip install ics
 #python -m pip install pisugar
 
+date >> time.txt
+
 echo "Check network..."
 while ! ping -c 1 -W 1 www.google.com; do
     sleep 1
