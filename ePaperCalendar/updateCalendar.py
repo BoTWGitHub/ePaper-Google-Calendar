@@ -13,7 +13,7 @@ def main():
         epd.init()
 
         lowBattery = False
-        if getPiSugarBatteryLevel.waitBatteryData() < 20:
+        if getPiSugarBatteryLevel.waitBatteryData() < 35:
             lowBattery = True
 
         logging.info("get new image...")
